@@ -458,20 +458,20 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
       </div>
 
       {/* USP / Keunggulan Bawah */}
-      <div className="grid grid-cols-3 gap-4 pt-8 border-t border-gray-800/60 max-w-md">
-        <div>
-          <p className="text-base text-yellow-500 font-bold">0%</p>
-          <p className="text-xs text-gray-400 mt-0.5">{translations[lang].uspTax}</p>
-        </div>
-        <div>
-          <p className="text-base text-yellow-500 font-bold">100%</p>
-          <p className="text-xs text-gray-400 mt-0.5">{translations[lang].uspInsurance}</p>
-        </div>
-        <div>
-          <p className="text-base text-yellow-500 font-bold">LBMA</p>
-          <p className="text-xs text-gray-400 mt-0.5">{translations[lang].uspLbma}</p>
-        </div>
-      </div>
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-8">
+  <div className="bg-gray-800 p-4 rounded-lg text-center">
+    <h3 className="text-xl font-bold text-yellow-500">0%</h3>
+    <p className="text-gray-300 text-sm">{translations[lang].uspTax}</p>
+  </div>
+  <div className="bg-gray-800 p-4 rounded-lg text-center">
+    <h3 className="text-xl font-bold text-yellow-500">100%</h3>
+    <p className="text-gray-300 text-sm">{translations[lang].uspInsurance}</p>
+  </div>
+  <div className="bg-gray-800 p-4 rounded-lg text-center">
+    <h3 className="text-xl font-bold text-yellow-500">LBMA</h3>
+    <p className="text-gray-300 text-sm">{translations[lang].uspLbma}</p>
+  </div>
+</div>
     </div>
 
           <div className="lg:w-2/5 mt-16 lg:mt-0 relative perspective-1000">
