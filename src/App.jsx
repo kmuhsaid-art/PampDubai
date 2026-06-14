@@ -935,7 +935,7 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
     message = "Halo Admin, saya ingin memesan produk berikut:%0A%0A";
   } else if (lang === "ar") {
     message = "مرحباً، أود طلب المنتجات التالية:%0A%0A";
-  } else {
+  } else if (lang === "en") {
     message = "Hello Admin, I would like to order the following products:%0A%0A";
   }
 
@@ -991,7 +991,7 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
               <li>• Buy-back Guarantee</li>
             </ul>
             <button 
-              onClick={() => window.open(`https://t.me/Pampgolddubai?text=Halo admin, saya tertarik dengan Starter Plan ($1,000)`, '_blank')}
+              onClick={() => window.open(`https://t.me/Pampgolddubai?text=Hello admin, How to join investment?`, '_blank')}
               className="w-full bg-yellow-600 hover:bg-yellow-500 text-black py-3 rounded-sm text-[10px] font-bold uppercase tracking-widest transition-colors cursor-pointer"
             >
               {translations[lang].menu4}
@@ -1009,7 +1009,7 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
               <li>• Physical Delivery Option</li>
             </ul>
             <button 
-              onClick={() => window.open(`https://t.me/Pampgolddubai?text=Halo admin, saya tertarik dengan Elite Plan ($10,000)`, '_blank')}
+              onClick={() => window.open(`https://t.me/Pampgolddubai?text=Hello admin, How to join investment?`, '_blank')}
               className="w-full bg-yellow-600 hover:bg-yellow-500 text-black py-3 rounded-sm text-[10px] font-bold uppercase tracking-widest transition-colors cursor-pointer"
             >
               {translations[lang].menu4}
