@@ -723,7 +723,7 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
       >
         <div>
           <label className="block text-xs text-gray-400 mb-1">
-            {lang === 'id' ? 'Nama Lengkap' : lang === 'ar' ? 'الاسم الكامل' : 'Full Name'}
+            {lang === 'en' ? 'Full Name' : lang === 'ar' ? 'الاسم الكامل' : 'Full Name'}
           </label>
           <input 
             type="text" 
@@ -737,7 +737,7 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
 
         <div>
           <label className="block text-xs text-gray-400 mb-1">
-            {lang === 'id' ? 'Nama Perusahaan' : lang === 'ar' ? 'اسم الشركة' : 'Company Name'}
+            {lang === 'en' ? 'Company Name' : lang === 'ar' ? 'اسم الشركة' : 'Company Name'}
           </label>
           <input 
             type="text" 
@@ -751,7 +751,7 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
 
         <div>
           <label className="block text-xs text-gray-400 mb-1">
-            {lang === 'id' ? 'Alamat' : lang === 'ar' ? 'العنوان' : 'Address'}
+            {lang === 'en' ? 'Address' : lang === 'ar' ? 'العنوان' : 'Address'}
           </label>
           <input 
             type="text" 
@@ -765,7 +765,7 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
 
         <div>
           <label className="block text-xs text-gray-400 mb-1">
-            {lang === 'id' ? 'Nomor Telepon' : lang === 'ar' ? 'رقم الهاتف' : 'Phone Number'}
+            {lang === 'en' ? 'Phone Number' : lang === 'ar' ? 'رقم الهاتف' : 'Phone Number'}
           </label>
           <input 
             type="text" 
@@ -791,7 +791,7 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
 
         <div>
           <label className="block text-xs text-gray-400 mb-1">
-            {lang === 'id' ? 'Nama Bank' : lang === 'ar' ? 'اسم البنك' : 'Bank Name'}
+            {lang === 'en' ? 'Bank Name' : lang === 'ar' ? 'اسم البنك' : 'Bank Name'}
           </label>
           <input 
             type="text" 
@@ -817,7 +817,7 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
 
         <div>
           <label className="block text-xs text-gray-400 mb-1">
-            {lang === 'id' ? 'Nomor Rekening' : lang === 'ar' ? 'رقم الحساب' : 'Bank Account Number'}
+            {lang === 'en' ? 'Bank Account Number' : lang === 'ar' ? 'رقم الحساب' : 'Bank Account Number'}
           </label>
           <input 
             type="text" 
@@ -831,12 +831,12 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
 
         <div>
           <label className="block text-xs text-gray-400 mb-1">
-            {lang === 'id' ? 'Estimasi Pembelian' : lang === 'ar' ? 'تقدير الشراء' : 'Estimated Purchase'}
+            {lang === 'en' ? 'Estimated Purchase' : lang === 'ar' ? 'تقدير الشراء' : 'Estimated Purchase'}
           </label>
           <input 
             type="text" 
-            name="totalKilo"
-            placeholder={lang === 'id' ? 'Contoh: 50 Kg' : lang === 'ar' ? 'مثال: 50 كجم' : 'Example: 50 Kg'}
+            name="totalInvestment"
+            placeholder={lang === 'en' ? 'Example: 50 Kg' : lang === 'ar' ? 'مثال: 50 كجم' : 'Example: 50 Kg'}
             required
             className="w-full bg-black/50 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-yellow-500"
             value={formInvestment.totalInvestment}
@@ -848,7 +848,7 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
           type="submit"
           className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black font-bold py-3 rounded transition-all mt-4 cursor-pointer"
         >
-          {lang === 'id' ? 'Kirim Permohonan via Telegram' : lang === 'ar' ? 'إرسال الطلب عبر تليجرام' : 'Send Request via Telegram'}
+          {lang === 'en' ? 'Send Request via Telegram' : lang === 'ar' ? 'إرسال الطلب عبر تليجرام' : 'Send Request via Telegram'}
         </button>
       </form>
    </div>
