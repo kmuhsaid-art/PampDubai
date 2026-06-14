@@ -377,6 +377,13 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
         >
           {lang === 'en' ? 'EN' : 'AR'}
         </button>
+
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="bg-gradient-to-r from-yellow-600 to-yellow-500 text-black px-5 py-2.5 rounded-sm text-sm font-bold hover:shadow-[0_0_15px_rgba(234,179,8,0.4)] transition-all uppercase tracking-wide cursor-pointer"
+        >
+          {translations[lang].navBtn}
+        </button>
       </div>
     </div>
 
