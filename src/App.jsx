@@ -254,12 +254,13 @@ const translations = {
 };
 
 const products = [
-  { id: 1, name: 'PAMP Lady Fortuna', weight: '1 oz', purity: '999.9 Emas Murni', price: '$2,410.00', type: 'Minted Bar', image: '/images/pamp1oz.png' },
-  { id: 2, name: 'PAMP Cast Bar', weight: '100 g', purity: '999.9 Emas Murni', price: '$7,650.00', type: 'Cast Bar', image: '/images/pamp100g.png' }, 
-  { id: 3, name: 'PAMP Lady Fortuna', weight: '10 g', purity: '999.9 Emas Murni', price: '$805.00', type: 'Minted Bar', image: '/images/pamp5g.png' },
-  { id: 4, name: 'PAMP Cast Bar', weight: '1 kg', purity: '999.9 Emas Murni', price: '$76,200.00', type: 'Cast Bar', image: '/images/pamp1kg.png' },
-  { id: 5, name: 'PAMP Lady Fortuna', weight: "1 g", purity: '999.9 Emas Murni', price: '$90.00', type: 'Minted Bar', image: '/images/pamp5g.png' },
-  { id: 6, name: 'PAMP Lady Fortuna', weight: "5 g", purity: '999.9 Emas Murni', price: '$420.00', type: 'Minted Bar', image: '/images/pamp5g.png' },
+  { id: 1, name: 'PAMP Lady Fortuna', weight: '1 oz', purity: '999.9 Emas Murni', price: 'AED 10,400', type: 'Minted Bar', image: '/images/pamp1oz.png' },
+  { id: 2, name: 'PAMP Cast Bar', weight: '100 g', purity: '999.9 Emas Murni', price: 'AED 35,400', type: 'Cast Bar', image: '/images/pamp100g.png' }, 
+  { id: 3, name: 'PAMP Lady Fortuna', weight: '10 g', purity: '999.9 Emas Murni', price: 'AED 3,700', type: 'Minted Bar', image: '/images/pamp5g.png' },
+  { id: 4, name: 'PAMP Cast Bar', weight: '1 kg', purity: '999.9 Emas Murni', price: 'AED 348,000', type: 'Cast Bar', image: '/images/pamp1kg.png' },
+  { id: 5, name: 'PAMP Lady Fortuna', weight: "1 g", purity: '999.9 Emas Murni', price: 'AED 380', type: 'Minted Bar', image: '/images/pamp5g.png' },
+  { id: 6, name: 'PAMP Lady Fortuna', weight: "5 g", purity: '999.9 Emas Murni', price: 'AED 1,870', type: 'Minted Bar', image: '/images/pamp5g.png' },
+  { id: 7, name: 'PAMP Lady Fortuna', weight: "50 g", purity: '999.9 Emas Murni', price: 'AED 18,000', type: 'Minted Bar', image: '/images/pamp5g.png' },
 ];
 
 const [selectedImage, setSelectedImage] = useState(null);
