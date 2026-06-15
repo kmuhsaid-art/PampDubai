@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Menu,
   X,
@@ -15,7 +15,7 @@ import {
   Lock,
 } from "lucide-react";
 
-export default function App() {
+  export default function App() {
   const [lang, setLang] = useState("en");
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -302,12 +302,40 @@ const [isInvestOpen, setIsInvestOpen] = useState(false);
 
 const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+const [goldPrice, setGoldPrice] = useState("378.00"); // Harga default/fallback
+
+const [loadingPrice, setLoadingPrice] = useState(true);
+
+useEffect(() => {
+    // Ganti dengan API Key Anda dari goldapi.io (Daftar akun gratis)
+    const apiKey = "goldapi-3c286396b824a76acb7ec5c16178095c-io"; 
+    
+    fetch('https://www.goldapi.io/api/XAU/AED', {
+      headers: {
+        'x-access-token': apiKey,
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.price) {
+          // Konversi troy ounce (31.1035g) ke gram
+          const calculatedPrice = (data.price / 31.1035).toFixed(2);
+          setGoldPrice(calculatedPrice);
+        }
+        setLoadingPrice(false);
+      })
+      .catch(error => {
+        console.error("Gagal mengambil harga live:", error);
+        setLoadingPrice(false);
+      });
+  }, []);
+
   return (
   <div
     dir={lang === "ar" ? "rtl" : "ltr"}
     className="min-h-screen bg-[#0a0a0a] text-gray-100 font-sans selection:bg-yellow-600 selection:text-white"
   >
-
       {/* Main Navigation */}
       <nav className="sticky top-0 z-50 bg-[#050505]/95 backdrop-blur-md border-b border-gray-800/50">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -506,6 +534,20 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
         </div>
       </div>
 
+<div className="bg-gray-800/80 backdrop-blur-sm border border-yellow-500/30 rounded-2xl p-5 shadow-xl max-w-sm w-full text-center mx-auto my-6">
+      <h4 className="text-xs font-bold text-gray-400 tracking-widest uppercase mb-3">
+        Live Gold Price (AED/Gram)
+      </h4>
+      {loadingPrice ? (
+        <div className="text-2xl font-black text-gray-300 animate-pulse py-2">
+          Updating price...
+        </div>
+      ) : (
+        <div className="text-4xl font-extrabold text-yellow-500 tracking-tight">
+          AED {goldPrice}
+        </div>
+      )}
+    </div>
       {/* Featured Products Section */}
       <div className="py-24 bg-[#0a0a0a]">
         <div id="products" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
