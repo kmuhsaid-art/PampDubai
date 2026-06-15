@@ -981,49 +981,204 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
           {translations[lang].menu3}
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-[#141414] border border-gray-800 p-5 rounded-sm flex flex-col">
-            <h4 className="text-yellow-500 font-serif text-lg mb-1 tracking-wide">Starter Plan</h4>
-            <span className="text-[10px] text-gray-500 mb-4 italic">Estimated return 5-7% p.a</span>
-            <div className="text-2xl font-bold text-white mb-4">$1,000 <span className="text-xs text-gray-500 font-normal">min. deposit</span></div>
-            <ul className="text-[11px] text-gray-400 space-y-2 mb-6 flex-1">
-              <li>• Physical Gold Certificate</li>
-              <li>• 24/7 Digital Monitoring</li>
-              <li>• Buy-back Guarantee</li>
-            </ul>
-            <button 
-              onClick={() => window.open(`https://t.me/Pampgolddubai?text=Hello admin, How to join investment?`, '_blank')}
-              className="w-full bg-yellow-600 hover:bg-yellow-500 text-black py-3 rounded-sm text-[10px] font-bold uppercase tracking-widest transition-colors cursor-pointer"
-            >
-              {translations[lang].menu4}
-            </button>
-          </div>
-          <div className="bg-[#141414] border border-yellow-900/30 p-5 rounded-sm flex flex-col relative overflow-hidden">
-            <div className="absolute top-0 right-0 bg-yellow-600 text-black text-[8px] font-bold px-2 py-1 uppercase">Best Seller</div>
-            <h4 className="text-yellow-500 font-serif text-lg mb-1 tracking-wide">Elite Plan</h4>
-            <span className="text-[10px] text-gray-500 mb-4 italic">Estimated return 8-12% p.a</span>
-            <div className="text-2xl font-bold text-white mb-4">$10,000 <span className="text-xs text-gray-500 font-normal">min. deposit</span></div>
-            <ul className="text-[11px] text-gray-400 space-y-2 mb-6 flex-1">
-              <li>• Priority Vault Storage</li>
-              <li>• Monthly Portfolio Report</li>
-              <li>• Dedicated Account Manager</li>
-              <li>• Physical Delivery Option</li>
-            </ul>
-            <button 
-              onClick={() => window.open(`https://t.me/Pampgolddubai?text=Hello admin, How to join investment?`, '_blank')}
-              className="w-full bg-yellow-600 hover:bg-yellow-500 text-black py-3 rounded-sm text-[10px] font-bold uppercase tracking-widest transition-colors cursor-pointer"
-            >
-              {translations[lang].menu4}
-            </button>
-          </div>
+          <div className="bg-[#f9c5d1] text-gray-900 rounded-3xl overflow-hidden shadow-xl border-4 border-gray-800 max-w-sm mx-auto w-full flex flex-col">
+            <div className="bg-[#9c2770] text-white py-4 text-center font-bold text-2xl tracking-wider uppercase">Classic</div>
+            <div className="bg-[#d4af37] text-gray-900 py-6 text-center">
+          <div className="text-5xl font-extrabold tracking-tight">2,5<span className="text-2xl ml-1 font-bold">g</span></div>
         </div>
-        <div className="p-4 bg-yellow-950/10 border border-yellow-900/20 rounded-sm">
-          <p className="text-[10px] text-yellow-600 text-center leading-relaxed">
-            {translations[lang].menu5}
-          </p>
+        <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+          <div className="space-y-4">
+            <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
+              <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD BUYING PRICE</span>
+              <span className="font-black text-lg">AED 378/g</span>
+            </div>
+            <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
+              <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD SELLING PRICE</span>
+              <span className="font-black text-lg">AED 490/g</span>
+            </div>
+            <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
+              <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD PURCHASE VALUE</span>
+              <span className="font-black text-lg">AED 945</span>
+            </div>
+            <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
+              <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD SALES VALUE</span>
+              <span className="font-black text-lg">AED 1,225</span>
+            </div>
+          </div>
+          <div className="pt-4">
+            <button className="w-full bg-[#ff7e00] hover:bg-orange-600 text-white font-black text-base py-3.5 px-4 rounded-full shadow-md transition-all tracking-wide uppercase">
+              SPREAD 30% AED 280
+            </button>
+          </div>
+       </div>
+      </div>
+          <div className="bg-[#f9c5d1] text-gray-900 rounded-3xl overflow-hidden shadow-xl border-4 border-gray-800 max-w-sm mx-auto w-full flex flex-col">
+        <div className="bg-[#88147f] text-white py-4 text-center font-bold text-2xl tracking-wider uppercase">Standard</div>
+        <div className="bg-[#d4af37] text-gray-900 py-6 text-center">
+          <div className="text-5xl font-extrabold tracking-tight">5<span className="text-2xl ml-1 font-bold">g</span></div>
+        </div>
+        <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+          <div className="space-y-4">
+            <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
+              <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD BUYING PRICE</span>
+              <span className="font-black text-lg">AED 374/g</span>
+            </div>
+            <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
+              <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD SELLING PRICE</span>
+              <span className="font-black text-lg">AED 500/g</span>
+            </div>
+            <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
+              <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD PURCHASE VALUE</span>
+              <span className="font-black text-lg">AED 1,870</span>
+            </div>
+            <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
+              <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD SALES VALUE</span>
+              <span className="font-black text-lg">AED 2,500</span>
+            </div>
+          </div>
+          <div className="pt-4">
+            <button className="w-full bg-[#ff7e00] hover:bg-orange-600 text-white font-black text-base py-3.5 px-4 rounded-full shadow-md transition-all tracking-wide uppercase">
+              SPREAD 34% AED 630
+            </button>
+          </div>
         </div>
       </div>
+
+      <div className="bg-[#f9c5d1] text-gray-900 rounded-3xl overflow-hidden shadow-xl border-4 border-gray-800 max-w-sm mx-auto w-full flex flex-col">
+        <div className="bg-[#600e5c] text-white py-4 text-center font-bold text-2xl tracking-wider uppercase">Premium</div>
+        <div className="bg-[#ff8c00] text-gray-900 py-6 text-center">
+          <div className="text-5xl font-extrabold tracking-tight">10<span className="text-2xl ml-1 font-bold">g</span></div>
+        </div>
+        <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+          <div className="space-y-4">
+            <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
+              <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD BUYING PRICE</span>
+              <span className="font-black text-lg">AED 370/g</span>
+            </div>
+            <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
+              <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD SELLING PRICE</span>
+              <span className="font-black text-lg">AED 510/g</span>
+            </div>
+            <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
+              <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD PURCHASE VALUE</span>
+              <span className="font-black text-lg">AED 3,700</span>
+            </div>
+            <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
+              <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD SALES VALUE</span>
+              <span className="font-black text-lg">AED 5,100</span>
+            </div>
+          </div>
+          <div className="pt-4">
+            <button className="w-full bg-[#ff7e00] hover:bg-orange-600 text-white font-black text-base py-3.5 px-4 rounded-full shadow-md transition-all tracking-wide uppercase">
+              SPREAD 38% AED 1,400
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* 4. ELITE */}
+      <div className="bg-[#f9c5d1] text-gray-900 rounded-3xl overflow-hidden shadow-xl border-4 border-gray-800 max-w-sm mx-auto w-full flex flex-col">
+        <div className="bg-[#6a1b82] text-white py-4 text-center font-bold text-2xl tracking-wider uppercase">Elite</div>
+        <div className="bg-[#d4af37] text-gray-900 py-6 text-center">
+          <div className="text-5xl font-extrabold tracking-tight">25<span className="text-2xl ml-1 font-bold">g</span></div>
+        </div>
+        <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+          <div className="space-y-4">
+            <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
+              <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD BUYING PRICE</span>
+              <span className="font-black text-lg">AED 366/g</span>
+            </div>
+            <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
+              <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD SELLING PRICE</span>
+              <span className="font-black text-lg">AED 520/g</span>
+            </div>
+            <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
+              <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD PURCHASE VALUE</span>
+              <span className="font-black text-lg">AED 9,150</span>
+            </div>
+            <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
+              <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD SALES VALUE</span>
+              <span className="font-black text-lg">AED 12,750</span>
+            </div>
+          </div>
+          <div className="pt-4">
+            <button className="w-full bg-[#ff7e00] hover:bg-orange-600 text-white font-black text-base py-3.5 px-4 rounded-full shadow-md transition-all tracking-wide uppercase">
+              SPREAD 40% AED 3,600
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* 5. PRESTIGE */}
+      <div className="bg-[#f9c5d1] text-gray-900 rounded-3xl overflow-hidden shadow-xl border-4 border-gray-800 max-w-sm mx-auto w-full flex flex-col">
+        <div className="bg-[#4a0d61] text-white py-4 text-center font-bold text-2xl tracking-wider uppercase">Prestige</div>
+        <div className="bg-[#d4af37] text-gray-900 py-6 text-center">
+          <div className="text-5xl font-extrabold tracking-tight">50<span className="text-2xl ml-1 font-bold">g</span></div>
+        </div>
+        <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+          <div className="space-y-4">
+            <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
+              <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD BUYING PRICE</span>
+              <span className="font-black text-lg">AED 360/g</span>
+            </div>
+            <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
+              <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD SELLING PRICE</span>
+              <span className="font-black text-lg">AED 530/g</span>
+            </div>
+            <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
+              <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD PURCHASE VALUE</span>
+              <span className="font-black text-lg">AED 18,000</span>
+            </div>
+            <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
+              <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD SALES VALUE</span>
+              <span className="font-black text-lg">AED 26,500</span>
+            </div>
+          </div>
+          <div className="pt-4">
+            <button className="w-full bg-[#ff7e00] hover:bg-orange-600 text-white font-black text-base py-3.5 px-4 rounded-full shadow-md transition-all tracking-wide uppercase">
+              SPREAD 47% AED 8,500
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* 6. ROYAL */}
+      <div className="bg-[#f9c5d1] text-gray-900 rounded-3xl overflow-hidden shadow-xl border-4 border-gray-800 max-w-sm mx-auto w-full flex flex-col">
+        <div className="bg-[#1e1b4b] text-white py-4 text-center font-bold text-2xl tracking-wider uppercase">Royal</div>
+        <div className="bg-[#d4af37] text-gray-900 py-6 text-center">
+          <div className="text-5xl font-extrabold tracking-tight">100<span className="text-2xl ml-1 font-bold">g</span></div>
+        </div>
+        <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+          <div className="space-y-4">
+            <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
+              <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD BUYING PRICE</span>
+              <span className="font-black text-lg">AED 354/g</span>
+            </div>
+            <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
+              <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD SELLING PRICE</span>
+              <span className="font-black text-lg">AED 540/g</span>
+            </div>
+            <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
+              <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD PURCHASE VALUE</span>
+              <span className="font-black text-lg">AED 35,400</span>
+            </div>
+            <div className="border-b-2 border-gray-400 pb-2 flex justify-between.»items-center">
+              <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD SALES VALUE</span>
+              <span className="font-black text-lg">AED 54,000</span>
+            </div>
+          </div>
+          <div className="pt-4">
+            <button className="w-full bg-[#ff7e00] hover:bg-orange-600 text-white font-black text-base py-3.5 px-4 rounded-full shadow-md transition-all tracking-wide uppercase">
+              SPREAD 52% AED 18,600
+            </button>
+          </div>
+        </div>
+      </div>
+
     </div>
+   </div>
   </div>
+ </div>
 )}
 </div>
 );
