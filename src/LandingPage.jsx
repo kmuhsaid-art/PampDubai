@@ -817,37 +817,20 @@ useEffect(() => {
   </div>
 </div>
     </div>
-
-          <div className="lg:w-2/5 mt-16 lg:mt-0 relative perspective-1000">
-            <div className="relative w-72 h-[450px] mx-auto transform rotate-y-12 rotate-x-6 hover:rotate-y-0 hover:rotate-x-0 transition-transform duration-700">
-              <div className="absolute inset-0 bg-yellow-500 rounded-lg blur-[80px] opacity-20"></div>
-              <div className="absolute inset-0 bg-gradient-to-br from-yellow-200 via-yellow-500 to-yellow-700 rounded-md shadow-2xl p-1 flex flex-col justify-between overflow-hidden border border-yellow-300/50">
-                <div className="w-full h-full bg-gradient-to-b from-[#e6c27a] via-[#cfa34b] to-[#a67c00] rounded-sm flex flex-col items-center p-8 relative">
-                  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-transparent via-white/30 to-transparent skew-x-12 translate-x-[-150%] animate-[shimmer_5s_infinite]"></div>
-                  
-                  <div className="mt-4 text-center">
-                    <h3 className="text-black font-serif text-2xl font-bold tracking-widest mb-1">PAMP</h3>
-                    <p className="text-yellow-900 text-xs tracking-widest font-bold">SUISSE</p>
-                  </div>
-                  
-                  <div className="my-auto text-center border-t border-b border-yellow-800/30 py-4 w-full">
-                    <p className="text-black font-bold text-lg tracking-widest">1 OUNCE</p>
-                    <p className="text-black font-medium tracking-widest mt-2">FINE GOLD</p>
-                    <p className="text-black font-bold tracking-widest text-xl">999.9</p>
-                  </div>
-                  
-                  <div className="mt-auto text-center w-full">
-                    <p className="text-yellow-900 text-[10px] tracking-widest font-bold mb-1">ESSAYEUR FONDEUR</p>
-                    <div className="w-full h-10 border border-yellow-800/20 rounded flex items-center justify-center mt-2 bg-yellow-900/5">
-                      <span className="text-black font-mono text-xs font-bold tracking-widest">C 048291</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="flex-1 flex justify-center lg:justify-end">
+          <div className="relative w-full max-w-sm">
+            {/* Efek Glow di belakang gambar */}
+            <div className="absolute inset-0 bg-[#D4AF37] opacity-10 blur-[120px] rounded-full"></div>
+            <img 
+              src="/minted.png" 
+              alt="PAMP Lady Fortuna" 
+              className="relative w-full h-auto drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+            />
           </div>
-        </div>
+         </div>
+
       </div>
+  </div>
 
 <div className="bg-gray-800/80 backdrop-blur-sm border border-yellow-500/30 rounded-2xl p-5 shadow-xl max-w-sm w-full text-center mx-auto my-6">
       <h4 className="text-xs font-bold text-gray-400 tracking-widest uppercase mb-3">
