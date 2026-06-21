@@ -45,12 +45,42 @@ function calculateLiveROI(investment) {
 }
 
 export default function InvestmentPlatform() {
-  const [view, setView] = useState('login');
+  const [view, setView] = useState('loading');
   const [memberDatabase, setMemberDatabase] = useState([]);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
   const [loading, setLoading] = useState(false);  
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [isEditMode, setEditMode] = useState(false);
+  const [memberData, setMemberData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);  
+
+  useEffect(() => {
+  const fetchMemberData = async () => {
+    // Ambil ID dari localStorage
+    const savedId = localStorage.getItem('member_account_id');
+    
+    if (!savedId) {
+      // Jika tidak ada ID, tendang ke landing page
+      window.location.hash = "#login"; 
+      return;
+    }
+
+    // Ambil data dari Supabase berdasarkan ID tersebut
+    const { data, error } = await supabase
+      .from('investments')
+      .select('*')
+      .eq('account_id', savedId)
+      .single();
+    
+    if (data) {
+      setMemberData(data);
+    }
+  };
+  
+  fetchMemberData();
+}, []);
 
   // STATE UNTUK MENAMPUNG DATA MEMBER YANG BERHASIL LOGIN DARI SUPABASE
   const [activeMemberData, setActiveMemberData] = useState(null);
@@ -64,7 +94,7 @@ export default function InvestmentPlatform() {
     planName: "",
     netProfit: 0,
     mode: "auto",
-    manualProfit: 0
+    manualProfit: 0,
   });    
 
   const [displayStats, setDisplayStats] = useState({});
@@ -88,10 +118,79 @@ useEffect(() => {
   }
 }, [view]);
 
+  useEffect(() => {
+  // Cek apakah ada sesi user yang tersimpan di Supabase
+  const checkUser = async () => {
+    const { data } = await supabase.auth.getSession();
+    if (data.session) {
+      // Jika ada session, arahkan kembali ke dashboard
+      // Anda bisa set state user disini
+    }
+  };
+  checkUser();
+}, []);
+
+useEffect(() => {
+  // Jika ditemukan ID yang tersimpan, tarik data ulang dari database
+  const autoLogin = async () => {
+   const savedId = localStorage.getItem('memberAccountId');
+    if (savedId) {
+      const { data } = await supabase
+        .from('investments')
+        .select('*')
+        .eq('account_id', savedId)
+        .single();
+        
+      if (data) {
+        setActiveMemberData(data);
+        setView('member_dashboard');
+      }
+    }
+    setIsLoading(false);
+  };
+  
+  autoLogin();
+}, []);
+
+useEffect(() => {
+  const savedId = localStorage.getItem('memberAccountId');
+  console.log("Checking session for ID:", savedId);
+
+  if (savedId) {
+      // (Proses fetch data dari Supabase...)
+      // Jika berhasil:  
+  } else {
+      console.log("No session found, redirecting to login.");
+      setView('login');
+  }
+}, []);
+
+useEffect(() => {
+  const checkSession = async () => {
+    const savedId = localStorage.getItem('memberAccountId');
+    
+    // Jika ada ID tersimpan, ambil kembali datanya dari Supabase
+    if (savedId) {
+      const { data } = await supabase
+        .from('investments')
+        .select('*')
+        .eq('account_id', savedId)
+        .single();
+        
+      if (data) {
+        setActiveMemberData(data);
+        setView('member_dashboard');
+      }
+    }
+  };
+  
+  checkSession();
+}, []);
+
 const handleWithdrawRequest = () => {
-  const message = `Halo Admin, saya ingin mengajukan Withdrawal.%0A%0A` +
-                  `Nama: ${activeMemberData.client_name}%0A` +
-                  `ID: ${activeMemberData.account_id}%0A` +
+  const message = `Hello Admin, I want to make a Withdrawal.%0A%0A` +
+                  `Name: ${activeMemberData.client_name}%0A` +
+                  `Username: ${activeMemberData.account_id}%0A` +
                   `Plan: ${activeMemberData.plan_name}%0A` +
                   `Capital: AED ${activeMemberData.capital}%0A` +
                   `Profit: AED ${displayStats.currentProfit}`;
@@ -165,7 +264,7 @@ const handleLoginSubmit = async (e) => {
     setLoading(true);
     
     // DETEKSI LOGIN ADMIN UTAMA
-    if (username === "admin_pamp" && password === "superadmin77") {
+    if (username === "admin" && password === "admin77") {
       setView('admin_panel');
       setLoading(false);
       return;
@@ -176,22 +275,56 @@ const handleLoginSubmit = async (e) => {
       const { data, error } = await supabase
         .from('investments')
         .select('*')
-        .eq('username', username)
+        .eq('account_id', username)
         .eq('password', password)
         .single(); // Ambil 1 baris data yang cocok data member
 
       if (error || !data) {
         setLoginError("⚠️ Invalid credentials. Access denied.");
       } else {
-        setActiveMemberData(data); // Simpan data asli dari database ke state
-        setView('member_dashboard');
-      }
+         setActiveMemberData(data);
+  // Simpan ke 'otak' browser agar tidak lupa
+         localStorage.setItem('member_account_id', data.account_id); 
+         setView('member_dashboard');
+       }
     } catch (err) {
       setLoginError("⚠️ Connection timeout. Check database connectivity.");
     } finally {
       setLoading(false);
     }
-  };
+  }; 
+
+  const handleCreateMember = async (formData, photoFile) => {
+  let photoUrl = null;
+
+  // 1. Upload foto ke Supabase Storage (jika ada file yang dipilih)
+  if (photoFile) {
+    const fileExt = photoFile.name.split('.').pop();
+    const fileName = `${formData.account_id}_${Date.now()}.${fileExt}`;
+    
+    const { data: uploadData, error: uploadError } = await supabase.storage
+      .from('Avatar')
+      .upload(fileName, photoFile);
+
+    if (!uploadError) {
+      const { data: publicUrlData } = supabase.storage
+        .from('Avatar')
+        .getPublicUrl(fileName);
+      photoUrl = publicUrlData.publicUrl;
+    }
+  }
+
+  // 2. Simpan data ke tabel 'members' termasuk photoUrl
+  const { data, error } = await supabase.from('members').insert([
+    {
+      ...formData,
+      profile_picture_url: photoUrl // Simpan link fotonya di sini
+    }
+  ]);
+  
+  if (error) alert("Gagal buat akun: " + error.message);
+  else alert("Akun dan foto berhasil ditambahkan!");
+};
 
   const handleAdminPlanSelect = (e) => {
   const planName = e.target.value;
@@ -227,7 +360,7 @@ const handleAdminPlanSelect = (e) => {
     .from('investments')
     .upsert([
       {
-        username: adminForm.username,
+        account_id: adminForm.username,
         password: adminForm.password,
         client_name: adminForm.clientName,
         capital: Number(adminForm.capital),
@@ -236,7 +369,7 @@ const handleAdminPlanSelect = (e) => {
         mode: adminForm.mode,
         manual_profit: Number(adminForm.manualProfit || 0)
       }
-    ], { onConflict: 'username' }); // Pastikan kolom username diset sebagai Primary Key/Unique di Supabase
+    ], { onConflict: 'account_id' }); // Pastikan kolom username diset sebagai Primary Key/Unique di Supabase
 
   if (error) {
     alert("Gagal: " + error.message);
@@ -247,7 +380,67 @@ const handleAdminPlanSelect = (e) => {
   }
   setLoading(false);
 };
+// ==========================================
+  // LOGIKA SAAT EDIT AKTIF
+  // ==========================================
+  const openEditModal = (member) => {
+   setAdminForm({
+    username: member.account_id,
+    clientName: member.client_name,
+    roiMode: member.mode,
+    // ... isi data lainnya
+   });
+   setIsEditMode(true); // <--- Kunci form saat edit
+  };
 
+  const openAddModal = () => {
+   setAdminForm({ username: '', clientName: '' /* ... */ });
+   setIsEditMode(false); // <--- Buka kunci saat tambah baru
+  };
+
+const handleUpdate = async () => {
+  try {
+    let photoUrl = adminForm.profile_picture_url || null;
+
+    // 1. Jika ada file baru yang dipilih, UPLOAD dulu ke Storage
+    if (selectedFile) {
+      const fileName = `${adminForm.username}_${Date.now()}.png`;
+      const { data: uploadData, error: uploadError } = await supabase.storage
+        .from('Avatar') // Pastikan nama bucket di Supabase adalah 'Avatar'
+        .upload(fileName, selectedFile);
+
+      if (uploadError) throw uploadError;
+
+      // Ambil URL publiknya
+      const { data: publicUrlData } = supabase.storage
+        .from('Avatar')
+        .getPublicUrl(fileName);
+      
+      photoUrl = publicUrlData.publicUrl;
+    }
+
+    // 2. Simpan/Update ke tabel 'investments'
+    const { error } = await supabase
+      .from('investments')
+      .upsert({
+        account_id: adminForm.username,
+        password: adminForm.password,
+        client_name: adminForm.clientName,
+        capital: adminForm.capital,
+        plan_name: adminForm.planName,
+        net_profit: adminForm.netProfit,
+        mode: adminForm.roiMode,
+        manual_profit: adminForm.manualProfit, 
+        profile_picture_url: photoUrl // Menyimpan URL foto
+      }, { onConflict: 'account_id' });
+
+    if (error) throw error;
+
+    alert("Berhasil Update Member & Foto!");
+  } catch (err) {
+    alert("Error: " + err.message);
+  }
+};
 
   // ==========================================
   // VIEW 1: PORTAL LOGIN
@@ -306,14 +499,24 @@ const handleAdminPlanSelect = (e) => {
               <div key={idx} className="flex justify-between items-center bg-black p-3 border border-gray-800 rounded">
                 <div>
                   <p className="text-xs font-bold">{m.clientName}</p>
-                  <p className="text-[9px] text-gray-500">{m.username}</p>
+                  <p className="text-[9px] text-gray-500">{m.account_id}</p>
                 </div>
                 <button 
-                  onClick={() => setAdminForm(m)} // Mengisi form dengan data member yang diklik
-                  className="bg-gray-800 hover:bg-yellow-600 text-[10px] px-3 py-1 rounded transition"
-                >
-                  EDIT
-                </button>
+  onClick={() => setAdminForm({
+    username: m.account_id, // Sesuaikan dengan nama kolom di database Anda
+    clientName: m.client_name, // Sesuaikan dengan nama kolom di database Anda
+    password: m.password, // Sesuaikan dengan nama kolom di database Anda
+    mode: m.mode, // Sesuaikan dengan nama kolom di database Anda
+    // Tambahkan properti lain yang perlu diisi
+    capital: m.capital,
+    planName: m.plan_name,
+    netProfit: m.net_profit
+  })}
+  className="bg-gray-800 hover:bg-yellow-600 text-[10px] px-3 py-1 rounded"
+>
+  EDIT
+</button>
+
               </div>
             ))}
           </div>
@@ -328,9 +531,29 @@ const handleAdminPlanSelect = (e) => {
   <form onSubmit={handleAdminSave} className="space-y-3 text-[11px]">
     <div className="grid grid-cols-2 gap-3">
       <div>
-        <label className="text-gray-500 uppercase font-bold text-[9px] block mb-1">Full Name</label>
-        <input type="text" placeholder="Investor Name" className="w-full bg-black border border-gray-800 p-2 text-white focus:border-yellow-600 outline-none"
-          value={adminForm.clientName} onChange={e => setAdminForm({...adminForm, clientName: e.target.value})} />
+          <label className="block text-white mb-2">Upload Foto Member:</label>
+          <input 
+            type="file"
+            accept="image/*"
+            onChange={(e) => setSelectedFile(e.target.files[0])} 
+            className="bg-gray-800 text-white p-2 w-full"
+          />
+      </div>
+      <div>
+        <label className="block text-white mb-2">Investor Name</label>
+{isEditMode ? (
+  <div className="p-2 w-full bg-gray-700 text-gray-400 border border-gray-600 rounded cursor-not-allowed">
+    {adminForm.clientName}
+  </div>
+) : (
+  <input 
+    type="text" 
+    value={adminForm.clientName}
+    onChange={(e) => setAdminForm({...adminForm, clientName: e.target.value})}
+    className="p-2 w-full bg-gray-800 text-white border border-gray-600 rounded"
+  />
+)}
+
       </div>
       <div>
         <label className="text-gray-500 uppercase font-bold text-[9px] block mb-1">Investment Plan</label>
@@ -349,9 +572,21 @@ const handleAdminPlanSelect = (e) => {
 
     <div className="grid grid-cols-2 gap-3">
       <div>
-        <label className="text-gray-500 uppercase font-bold text-[9px] block mb-1">Account ID</label>
-        <input type="text" placeholder="Username" className="w-full bg-black border border-gray-800 p-2 text-white focus:border-yellow-600 outline-none"
-          value={adminForm.username} onChange={e => setAdminForm({...adminForm, username: e.target.value})} />
+        <label className="block text-white mb-2">Account ID</label>
+{isEditMode ? (
+  // Tampilan saat Edit (Hanya teks, tidak bisa diubah)
+  <div className="p-2 w-full bg-gray-700 text-gray-400 border border-gray-600 rounded cursor-not-allowed">
+    {adminForm.username}
+  </div>
+) : (
+  // Tampilan saat Create New (Bisa diketik)
+  <input 
+    type="text" 
+    value={adminForm.username}
+    onChange={(e) => setAdminForm({...adminForm, username: e.target.value})}
+    className="p-2 w-full bg-gray-800 text-white border border-gray-600 rounded"
+  />
+)}
       </div>
       <div>
         <label className="text-gray-500 uppercase font-bold text-[9px] block mb-1">Access Key</label>
@@ -389,9 +624,12 @@ const handleAdminPlanSelect = (e) => {
       </div>
     </div>
 
-    <button type="submit" className="w-full bg-gradient-to-r from-yellow-600 to-yellow-400 text-black font-black py-3 rounded mt-4 tracking-widest uppercase">
-      {adminForm.username ? "CONFIRM UPDATE" : "SUBMIT"}
-    </button>
+    <button 
+  onClick={handleUpdate} // <--- HUBUNGKAN DI SINI
+  className="w-full bg-yellow-500 p-3 font-bold"
+>
+  SUBMIT
+</button>
     
     <button type="button" onClick={() => setAdminForm({username: '', password: '', clientName: '', capital: 0, planName: '', netProfit: 0, mode: 'auto', manualProfit: 0})}
       className="w-full text-gray-500 py-1 text-[9px] uppercase tracking-widest hover:text-white transition">
@@ -403,7 +641,7 @@ const handleAdminPlanSelect = (e) => {
     </div>
   );
 }
-
+   
 
   // ==========================================
   // VIEW 3: MEMBER DASHBOARD DYNAMIC
@@ -415,14 +653,18 @@ const handleAdminPlanSelect = (e) => {
       {/* Header Section Di-update */}
       <div className="flex justify-between items-center border-b border-gray-800 pb-8">
         <div className="flex items-center gap-4">
-          <img src="/avatar-placeholder.png" alt="Profile" className="w-12 h-12 rounded-full border border-gray-700" />
+          <img 
+      src={activeMemberData?.profile_picture_url || "/Avatar-placeholder.png"} 
+      alt="Profile" 
+      className="w-12 h-12 rounded-full border border-gray-700 object-cover" 
+    />
         <div>
         <h1 className="text-xl font-bold text-white">{activeMemberData?.client_name}</h1>
         <p className="text-[10px] text-yellow-600 mb-1">Active Plan = {activeMemberData?.plan_name}</p>
       </div>
       </div>
        <div className="text-right">
-         <p className="text-[10px] text-gray-500 uppercase tracking-widest">Welcome | {activeMemberData?.username}</p>
+         <p className="text-[10px] text-gray-500 uppercase tracking-widest">Welcome | {activeMemberData?.account_id}</p>
         <button onClick={() => setView('login')} className="text-[9px] uppercase border border-gray-800 px-3 py-1 hover:bg-gray-900">Logout</button>
        </div>
     </div>
