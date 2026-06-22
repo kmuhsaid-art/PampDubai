@@ -622,30 +622,66 @@ const [goldPrice, setGoldPrice] = useState("378.00"); // Harga default/fallback
 const [loadingPrice, setLoadingPrice] = useState(true);
 
 useEffect(() => {
-    // Ganti dengan API Key Anda dari goldapi.io (Daftar akun gratis)
-    const apiKey = "goldapi-3c286396b824a76acb7ec5c16178095c-io"; 
-    
-    fetch('https://www.goldapi.io/api/XAU/AED', {
-      headers: {
-        'x-access-token': apiKey,
-        'Content-Type': 'application/json'
-      }
-    })
-      .then(response => response.json())
-      .then(data => {
-        if (data.price) {
-          // Konversi troy ounce (31.1035g) ke gram
-          const calculatedPrice = (data.price / 31.1035).toFixed(2);
-          setGoldPrice(calculatedPrice);
-        }
-        setLoadingPrice(false);
-      })
-      .catch(error => {
-        console.error("Gagal mengambil harga live:", error);
-        setLoadingPrice(false);
-      });
-  }, []);
 
+  const apiKey = "goldapi-49eb014d7742b04ddb59eaa44f44e07b-io";
+
+  fetch("https://www.goldapi.io/api/XAU/AED", {
+
+    headers: {
+
+      "x-access-token": apiKey,
+
+      "Content-Type": "application/json",
+
+    },
+
+  })
+
+    .then(async (response) => {
+
+      const data = await response.json();
+
+
+
+      if (!response.ok) {
+
+        throw new Error(data.error || "Failed");
+
+      }
+
+
+
+      return data;
+
+    })
+
+    .then((data) => {
+
+      const calculatedPrice = (data.price / 31.1035).toFixed(2);
+
+      setGoldPrice(calculatedPrice);
+
+    })
+
+    .catch((error) => {
+
+      console.error("GoldAPI Error:", error);
+
+
+
+      // harga cadangan
+
+      setGoldPrice("410.00");
+
+    })
+
+    .finally(() => {
+
+      setLoadingPrice(false);
+
+    });
+
+}, []);
   return (
   <div
     dir={lang === "ar" ? "rtl" : "ltr"}
