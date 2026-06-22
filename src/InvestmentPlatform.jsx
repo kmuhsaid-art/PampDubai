@@ -695,6 +695,24 @@ const handleUpdate = async () => {
           <div className="bg-yellow-600 h-full transition-all duration-1000" style={{ width: `${displayStats.progressPercent}%` }}></div>
         </div>
       </div>
+      
+      {/* --- BAGIAN BARU: ESTIMASI ROI --- */}
+      <div className="flex justify-between items-end mb-2">
+        <p className="text-[9px] text-gray-500 uppercase tracking-widest">Est. Final Profit</p>
+        <p className="text-xl font-bold text-yellow-500">
+         AED {Number(activeMemberData?.net_profit || 0).toLocaleString()}
+        </p>
+      </div>
+      {/* --------------------------------- */}
+
+     <div className="flex justify-between text-[10px] uppercase tracking-widest mb-4">
+       <span className="text-gray-500">Investment Maturity</span>
+       <span className="text-yellow-600">{displayStats.progressPercent}%</span>
+     </div>
+     <div className="w-full bg-gray-900 h-2 rounded-full overflow-hidden">
+     <div className="bg-yellow-600 h-full transition-all duration-1000" style={{ width: `${displayStats.progressPercent}%` }}></div>
+     </div>
+     
 
       {/* --- BARU: STATUS ALERT --- */}
 {displayStats.progressPercent >= 90 && (
