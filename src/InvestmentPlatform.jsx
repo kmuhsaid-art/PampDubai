@@ -687,14 +687,7 @@ const handleUpdate = async () => {
 
       {/* PROGRESS BAR SECTION */}
       <div className="bg-[#0a0a0a] border border-gray-900 p-8">
-        <div className="flex justify-between text-[10px] uppercase tracking-widest mb-4">
-          <span className="text-gray-500">Investment Maturity</span>
-          <span className="text-yellow-600">{displayStats.progressPercent}%</span>
-        </div>
-        <div className="w-full bg-gray-900 h-2 rounded-full overflow-hidden">
-          <div className="bg-yellow-600 h-full transition-all duration-1000" style={{ width: `${displayStats.progressPercent}%` }}></div>
-        </div>
-      </div>
+        
       
       {/* --- BAGIAN BARU: ESTIMASI ROI --- */}
       <div className="flex justify-between items-end mb-2">
@@ -704,16 +697,15 @@ const handleUpdate = async () => {
         </p>
       </div>
       {/* --------------------------------- */}
-
-     <div className="flex justify-between text-[10px] uppercase tracking-widest mb-4">
+      <div className="flex justify-between text-[10px] uppercase tracking-widest mb-4">
        <span className="text-gray-500">Investment Maturity</span>
        <span className="text-yellow-600">{displayStats.progressPercent}%</span>
      </div>
-     <div className="w-full bg-gray-900 h-2 rounded-full overflow-hidden">
-     <div className="bg-yellow-600 h-full transition-all duration-1000" style={{ width: `${displayStats.progressPercent}%` }}></div>
-     </div>
+        <div className="w-full bg-gray-900 h-2 rounded-full overflow-hidden">
+          <div className="bg-yellow-600 h-full transition-all duration-1000" style={{ width: `${displayStats.progressPercent}%` }}></div>
+        </div>
+      </div>
      
-
       {/* --- BARU: STATUS ALERT --- */}
 {displayStats.progressPercent >= 90 && (
   <div className="bg-yellow-950/30 border border-yellow-700/50 p-4 mb-6 animate-pulse">
