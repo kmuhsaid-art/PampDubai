@@ -5,12 +5,12 @@ import { supabase } from './supabaseClient';
 import jsPDF from 'jspdf';
 
 const investmentPlans = {
-  "Classic (2.5g)": { buying: 945, netProfit: 280 },
-  "Standard (5g)": { buying: 1870, netProfit: 630 },
-  "Premium (10g)": { buying: 3700, netProfit: 1400 },
-  "Elite (25g)": { buying: 9150, netProfit: 3600 },
-  "Prestige (50g)": { buying: 18000, netProfit: 8500 },
-  "Royal (100g)": { buying: 35400, netProfit: 18600 }
+  "Classic (2.5g)": { buying: 1000, netProfit: 3000 },
+  "Standard (5g)": { buying: 2000, netProfit: 7000 },
+  "Premium (10g)": { buying: 4000, netProfit: 15200 },
+  "Elite (25g)": { buying: 10000, netProfit: 40000 },
+  "Prestige (50g)": { buying: 20000, netProfit: 90000 },
+  "Royal (100g)": { buying: 40000, netProfit: 192000 }
 };
 
 // LOGIKA HITUNG LIVE ROI (TETAP SAMA)
