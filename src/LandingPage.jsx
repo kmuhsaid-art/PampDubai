@@ -605,12 +605,12 @@ const removeFromCart = (productId) => {
 const [investmentPlan, setInvestmentPlan] = useState("");
 
 const investmentDetails = {
-  "Classic (2.5g)": { buying: 945, sales: 1225, spread: 280, percentage: "30%" },
-  "Standard (5g)": { buying: 1870, sales: 2500, spread: 630, percentage: "34%" },
-  "Premium (10g)": { buying: 3700, sales: 5100, spread: 1400, percentage: "38%" },
-  "Elite (25g)": { buying: 9150, sales: 12750, spread: 3600, percentage: "40%" },
-  "Prestige (50g)": { buying: 18000, sales: 26500, spread: 8500, percentage: "47%" },
-  "Royal (100g)": { buying: 35400, sales: 54000, spread: 18600, percentage: "52%" }
+  "Classic (2.5g)": { buying: 1000, sales: 4000, spread: 3000, percentage: "300%" },
+  "Standard (5g)": { buying: 2000, sales: 9000, spread: 7000, percentage: "350%" },
+  "Premium (10g)": { buying: 4000, sales: 19200, spread: 15200, percentage: "380%" },
+  "Elite (25g)": { buying: 10000, sales: 50000, spread: 40000, percentage: "400%" },
+  "Prestige (50g)": { buying: 20000, sales: 110000, spread: 90000, percentage: "450%" },
+  "Royal (100g)": { buying: 40000, sales: 232000, spread: 192000, percentage: "480%" }
 };
 
 const [isInvestOpen, setIsInvestOpen] = useState(false);
@@ -1512,24 +1512,24 @@ useEffect(() => {
           <div className="space-y-4">
             <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
               <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD BUYING PRICE</span>
-              <span className="font-black text-lg">AED 378/g</span>
+              <span className="font-black text-lg">AED 400/g</span>
             </div>
             <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
               <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD SELLING PRICE</span>
-              <span className="font-black text-lg">AED 490/g</span>
+              <span className="font-black text-lg">AED 1,600/g</span>
             </div>
             <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
               <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD PURCHASE VALUE</span>
-              <span className="font-black text-lg">AED 945</span>
+              <span className="font-black text-lg">AED 1,000</span>
             </div>
             <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
               <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD SALES VALUE</span>
-              <span className="font-black text-lg">AED 1,225</span>
+              <span className="font-black text-lg">AED 4,000</span>
             </div>
           </div>
           <div className="pt-4">
             <button className="w-full bg-[#ff7e00] hover:bg-orange-600 text-white font-black text-base py-3.5 px-4 rounded-full shadow-md transition-all tracking-wide uppercase">
-              SPREAD 30% AED 280
+              SPREAD 300% AED 3,000
             </button>
           </div>
        </div>
@@ -1543,24 +1543,24 @@ useEffect(() => {
           <div className="space-y-4">
             <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
               <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD BUYING PRICE</span>
-              <span className="font-black text-lg">AED 374/g</span>
+              <span className="font-black text-lg">AED 400/g</span>
             </div>
             <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
               <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD SELLING PRICE</span>
-              <span className="font-black text-lg">AED 500/g</span>
+              <span className="font-black text-lg">AED 1,800/g</span>
             </div>
             <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
               <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD PURCHASE VALUE</span>
-              <span className="font-black text-lg">AED 1,870</span>
+              <span className="font-black text-lg">AED 2,000</span>
             </div>
             <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
               <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD SALES VALUE</span>
-              <span className="font-black text-lg">AED 2,500</span>
+              <span className="font-black text-lg">AED 9,000</span>
             </div>
           </div>
           <div className="pt-4">
             <button className="w-full bg-[#ff7e00] hover:bg-orange-600 text-white font-black text-base py-3.5 px-4 rounded-full shadow-md transition-all tracking-wide uppercase">
-              SPREAD 34% AED 630
+              SPREAD 350% AED 7,000
             </button>
           </div>
         </div>
@@ -1575,29 +1575,28 @@ useEffect(() => {
           <div className="space-y-4">
             <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
               <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD BUYING PRICE</span>
-              <span className="font-black text-lg">AED 370/g</span>
+              <span className="font-black text-lg">AED 400/g</span>
             </div>
             <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
               <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD SELLING PRICE</span>
-              <span className="font-black text-lg">AED 510/g</span>
+              <span className="font-black text-lg">AED 1,920/g</span>
             </div>
             <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
               <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD PURCHASE VALUE</span>
-              <span className="font-black text-lg">AED 3,700</span>
+              <span className="font-black text-lg">AED 4,000</span>
             </div>
             <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
               <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD SALES VALUE</span>
-              <span className="font-black text-lg">AED 5,100</span>
+              <span className="font-black text-lg">AED 19,200</span>
             </div>
           </div>
           <div className="pt-4">
             <button className="w-full bg-[#ff7e00] hover:bg-orange-600 text-white font-black text-base py-3.5 px-4 rounded-full shadow-md transition-all tracking-wide uppercase">
-              SPREAD 38% AED 1,400
+              SPREAD 380% AED 15,200
             </button>
           </div>
         </div>
       </div>
-
       {/* 4. ELITE */}
       <div className="bg-[#f9c5d1] text-gray-900 rounded-3xl overflow-hidden shadow-xl border-4 border-gray-800 max-w-sm mx-auto w-full flex flex-col">
         <div className="bg-[#6a1b82] text-white py-4 text-center font-bold text-2xl tracking-wider uppercase">Elite</div>
@@ -1608,29 +1607,28 @@ useEffect(() => {
           <div className="space-y-4">
             <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
               <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD BUYING PRICE</span>
-              <span className="font-black text-lg">AED 366/g</span>
+              <span className="font-black text-lg">AED 400/g</span>
             </div>
             <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
               <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD SELLING PRICE</span>
-              <span className="font-black text-lg">AED 520/g</span>
+              <span className="font-black text-lg">AED 2,000/g</span>
             </div>
             <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
               <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD PURCHASE VALUE</span>
-              <span className="font-black text-lg">AED 9,150</span>
+              <span className="font-black text-lg">AED 10,000</span>
             </div>
             <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
               <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD SALES VALUE</span>
-              <span className="font-black text-lg">AED 12,750</span>
+              <span className="font-black text-lg">AED 50,000</span>
             </div>
           </div>
           <div className="pt-4">
             <button className="w-full bg-[#ff7e00] hover:bg-orange-600 text-white font-black text-base py-3.5 px-4 rounded-full shadow-md transition-all tracking-wide uppercase">
-              SPREAD 40% AED 3,600
+              SPREAD 400% AED 40,000
             </button>
           </div>
         </div>
       </div>
-
       {/* 5. PRESTIGE */}
       <div className="bg-[#f9c5d1] text-gray-900 rounded-3xl overflow-hidden shadow-xl border-4 border-gray-800 max-w-sm mx-auto w-full flex flex-col">
         <div className="bg-[#4a0d61] text-white py-4 text-center font-bold text-2xl tracking-wider uppercase">Prestige</div>
@@ -1641,29 +1639,28 @@ useEffect(() => {
           <div className="space-y-4">
             <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
               <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD BUYING PRICE</span>
-              <span className="font-black text-lg">AED 360/g</span>
+              <span className="font-black text-lg">AED 400/g</span>
             </div>
             <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
               <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD SELLING PRICE</span>
-              <span className="font-black text-lg">AED 530/g</span>
+              <span className="font-black text-lg">AED 2,200/g</span>
             </div>
             <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
               <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD PURCHASE VALUE</span>
-              <span className="font-black text-lg">AED 18,000</span>
+              <span className="font-black text-lg">AED 20,000</span>
             </div>
             <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
               <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD SALES VALUE</span>
-              <span className="font-black text-lg">AED 26,500</span>
+              <span className="font-black text-lg">AED 110,000</span>
             </div>
           </div>
           <div className="pt-4">
             <button className="w-full bg-[#ff7e00] hover:bg-orange-600 text-white font-black text-base py-3.5 px-4 rounded-full shadow-md transition-all tracking-wide uppercase">
-              SPREAD 47% AED 8,500
+              SPREAD 450% AED 90,000
             </button>
           </div>
         </div>
       </div>
-
       {/* 6. ROYAL */}
       <div className="bg-[#f9c5d1] text-gray-900 rounded-3xl overflow-hidden shadow-xl border-4 border-gray-800 max-w-sm mx-auto w-full flex flex-col">
         <div className="bg-[#1e1b4b] text-white py-4 text-center font-bold text-2xl tracking-wider uppercase">Royal</div>
@@ -1674,24 +1671,24 @@ useEffect(() => {
           <div className="space-y-4">
             <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
               <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD BUYING PRICE</span>
-              <span className="font-black text-lg">AED 354/g</span>
+              <span className="font-black text-lg">AED 400/g</span>
             </div>
             <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
               <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD SELLING PRICE</span>
-              <span className="font-black text-lg">AED 540/g</span>
+              <span className="font-black text-lg">AED 2,320/g</span>
             </div>
             <div className="border-b-2 border-gray-400 pb-2 flex justify-between items-center">
               <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD PURCHASE VALUE</span>
-              <span className="font-black text-lg">AED 35,400</span>
+              <span className="font-black text-lg">AED 40,000</span>
             </div>
             <div className="border-b-2 border-gray-400 pb-2 flex justify-between.»items-center">
               <span className="font-bold text-xs text-gray-800 tracking-wider">GOLD SALES VALUE</span>
-              <span className="font-black text-lg">AED 54,000</span>
+              <span className="font-black text-lg">AED 232,000</span>
             </div>
           </div>
           <div className="pt-4">
             <button className="w-full bg-[#ff7e00] hover:bg-orange-600 text-white font-black text-base py-3.5 px-4 rounded-full shadow-md transition-all tracking-wide uppercase">
-              SPREAD 52% AED 18,600
+              SPREAD 480% AED 192,000
             </button>
           </div>
         </div>
@@ -1705,3 +1702,4 @@ useEffect(() => {
 </div>
 );
 }
+
